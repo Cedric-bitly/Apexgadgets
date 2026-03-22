@@ -79,61 +79,62 @@ const [product_photo, setProductphoto] = useState("");
   }
 
   return (
-    <div className='row justify-content-center mt-4'>
-      <div className="card col-md-6 shadow p-4">
-        <h3 className='text-primary '>Add an Apex Gadget</h3>
-         <h5 className="text-info">{loading}</h5>
-         <h3 className='text-success'>{success}</h3>
-         <h4 className="text-danger">{error}</h4>
- 
+      <div className="addproduct-wrapper">
+    <div className="addproduct-box">
 
-        {/* //bind the loading hooks */}
-        {loading && <Loader/>}
+      <h3 className="addproduct-title">Add an Apex Gadget</h3>
 
-        <form onSubmit={handleSubmit}>
-          <input type="text" 
-          placeholder='Enter the Gadget name'
-          className='form-control'
-          required
+      {loading && <Loader />}
+      {success && <h5 style={{ color: '#2ed573', marginBottom: '1rem' }}>✓ {success}</h5>}
+      {error   && <h5 style={{ color: '#ff4757', marginBottom: '1rem' }}>✗ {error}</h5>}
+
+      <form onSubmit={handleSubmit}>
+        <label className="addproduct-label">Gadget Name</label>
+        <input
+          type="text"
+          className="addproduct-input"
+          placeholder="Enter the gadget name"
           value={product_name}
-          onChange={(e) => setProductname(e.target.value)}/> <br />
-
-          {/* {product_name} */}
-
-          <input type="text" 
-          placeholder='Enter the Gadget description'
-          className='form-control'
+          onChange={(e) => setProductname(e.target.value)}
           required
+        />
+
+        <label className="addproduct-label">Description</label>
+        <input
+          type="text"
+          className="addproduct-input"
+          placeholder="Enter the gadget description"
           value={product_description}
-          onChange={(e) => setProductdescription(e.target.value)}/> <br />
-
-          {/* {product_description} */}
-
-          <input type="number"
-          placeholder='Enter the Gadget cost'
-          className='form-control'
+          onChange={(e) => setProductdescription(e.target.value)}
           required
+        />
+
+        <label className="addproduct-label">Cost (Kshs)</label>
+        <input
+          type="number"
+          className="addproduct-input"
+          placeholder="Enter the gadget cost"
           value={product_cost}
-          onChange={(e) => setProductcost(e.target.value)}/> <br />
-
-          {/* {product_cost} */}
-
-          <label className='text-tertiary'>Gadget photo</label>
-          <input type="file" 
-          className='form-control'
+          onChange={(e) => setProductcost(e.target.value)}
           required
-          accept='image/*'
-          onChange={(e) => setProductphoto(e.target.files[0])}/> <br />
+        />
 
-        
+        <label className="addproduct-label">Gadget Photo</label>
+        <input
+          type="file"
+          className="addproduct-input"
+          accept="image/*"
+          onChange={(e) => setProductphoto(e.target.files[0])}
+          required
+        />
 
-          <input type="submit" 
-          value="Add Gadget to Cart" 
-          className='btn btn-outline-primary'
-          />
-        </form>
-      </div>
+        <button type="submit" className="addproduct-btn">
+          + Add Gadget to Catalogue
+        </button>
+      </form>
+
     </div>
+  </div>
   )
 }
 

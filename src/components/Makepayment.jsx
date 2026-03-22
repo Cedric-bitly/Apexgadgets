@@ -55,57 +55,60 @@ const Makepayment = () => {
     }
 
       // Safety check - if product doesn't exist, show loading or error
-      if (!product) {
-       return <div className="text-center mt-5"><h3>Loading product details...</h3></div>;
-    }
+     if (!product) return (
+      <div style={{ textAlign: 'center', marginTop: '3rem', color: '#00b8d9' }}>
+        ⟳ Loading product details...
+      </div>
+    );
 
   return (
-    <div className='row justify-content-center'>
-        {/* <Button className='btn btn-primary '>Back to Products</Button> */}
+     <div className="payment-wrapper">
 
-        <h1 className='text-success'>Make Payment - Lipa Na M-Pesa</h1>   
+    <button className="payment-back" onClick={() => navigate('/getproducts')}>
+      ← Back to Gadgets
+    </button>
 
-          <div className="col-md-1">
-            <input type="button"
-            className="btn btn-success"
-            value="<--Back"
-            onClick={() => navigate("/getproducts")} />
-        </div> 
+    <div className="payment-box">
 
-        <div className='col-md-6 card shadow p-4'>
-          <img src={img_url + product.product_photo} alt="Product name" className='product_img'/>
+      <h2 className="payment-title">Make Payment · M-Pesa</h2>
 
-          <div className="cardbody">
-              <h2 className='text-info'> {product.product_name} </h2>
-
-
-              <p className="text-dark"> {product.product_description} </p>
-
-              <h3 className="text-warning">Kshs. {product.product_cost}</h3> <br />
-
-              <form onSubmit={handleSubmit}>
-
-                  {/* bind the loading hook */}
-            {loading && <Loader />}
-            <h3 className="text-success"> {success} </h3>
-            <h4 className="text-danger"> {error} </h4>
-                 
-                <input type="number"
-                className='form-control'
-                placeholder='Enter your Phone Number : 254XXXXXXXXX'
-                required
-                value={number}
-                onChange={(e) => setNumber(e.target.value)} /> <br />
-
-                {/* {number} */}
-                
-                <input type="submit" 
-                value="Makepayment"
-                className='btn btn-success'/>
-              </form>
-          </div>
+      {/* Product preview */}
+      <div className="payment-preview">
+        <img
+          src={img_url + product.product_photo}
+          alt={product.product_name}
+          className="payment-preview-img"
+        />
+        <div>
+          <p className="payment-product-name">{product.product_name}</p>
+          <p className="payment-product-desc">{product.product_description}</p>
+          <p className="payment-product-price">Kshs. {product.product_cost}</p>
         </div>
+      </div>
+
+      {loading && <Loader />}
+      {success && <h5 style={{ color: '#2ed573', marginBottom: '1rem' }}>✓ {success}</h5>}
+      {error   && <h5 style={{ color: '#ff4757', marginBottom: '1rem' }}>✗ {error}</h5>}
+
+      <form onSubmit={handleSubmit}>
+        <label className="payment-label">M-Pesa Phone Number</label>
+        <input
+          type="number"
+          className="payment-input"
+          placeholder="254XXXXXXXXX"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+          required
+        />
+
+        <button type="submit" className="payment-btn">
+          ✓ Confirm Payment — Kshs. {product.product_cost}
+        </button>
+      </form>
+
     </div>
+  </div>
+   
   )
 }
 

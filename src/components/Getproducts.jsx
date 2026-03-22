@@ -52,39 +52,41 @@ useEffect(() => {
 
 
   return (
-    <div className='row'>
-      <h2 className='text-tertiary'>Available Gadgets</h2>
+      <div className="getproducts-wrapper">
 
-      {loading && <Loader/> }
-      <h4 className='text-danger'> {error} </h4>
+    <h2 className="getproducts-title">Available Gadgets</h2>
 
-     {/* map the products fetched from the API to the user interface */}
+    {loading && <Loader />}
+    {error && <h4 style={{ color: '#ff4757' }}>✗ {error}</h4>}
 
-     {products.map((product) => (
-         <div className='col-md-3 justify-content-center mb-3'>
-        <div className="card shadow">
-          <img src={img_url + product.product_photo}
-           alt="product name" 
-           className='product_img mt-3'/>
-
-          <div className="card-body">
-            <h5 className='text-primary'> {product.product_name} </h5>
-
-            <p className='text-dark'> {product.product_description.slice(0, 61)}... </p>
-
-            <h4 className='text-warning'>Kshs. {product.product_cost} </h4>
-
-
-            <button className="btn btn-outline-info" onClick={() => navigate('/makepayment', { state: { product } })}>Make Purchase</button>
-
-
+    <div className="row g-4">
+      {products.map((product) => (
+        <div key={product.id} className="col-md-3 col-sm-6">
+          <div className="product-card">
+            <img
+              src={img_url + product.product_photo}
+              alt={product.product_name}
+            />
+            <div className="product-card-body">
+              <p className="product-card-name">{product.product_name}</p>
+              <p className="product-card-desc">
+                {product.product_description.slice(0, 61)}...
+              </p>
+              <p className="product-card-price">Kshs. {product.product_cost}</p>
+              <button
+                className="product-card-btn"
+                onClick={() => navigate('/makepayment', { state: { product } })}
+              >
+                ⚡ Make Purchase
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-     ) )}
-
+      ))}
     </div>
-  )
+
+  </div>
+  );
 }
 
 export default Getproducts;

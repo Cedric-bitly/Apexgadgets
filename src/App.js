@@ -7,14 +7,13 @@ import Addproducts from './components/Addproducts';
 import Getproducts from './components/Getproducts';
 import Makepayment from './components/Makepayment';
 import Notfound from './components/Notfound';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <header className="App-header">
-          <h2>Welcome to Apex Gadgets - Elevate your Tech</h2>
-        </header>
+        <Navbar />
         <Routes>
          <Route path = '/getproducts' element = {<Getproducts />} />
          <Route path = '/signup' element = {<Signup />} />

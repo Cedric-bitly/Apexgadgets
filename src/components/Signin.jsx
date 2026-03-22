@@ -64,41 +64,48 @@ const Signin = () => {
 
   
   return (
-    <div className='row justify-content-center mt-4'>
-         <div className="col-md-6 card shadow p-4">
-           <h1 className='text-info'>Sign In</h1>
+      <div className="signin-wrapper">
+    <div className="signin-box">
 
-           <h5 className="text-info">{loading}</h5>
-           <h3 className="text-success">{success}</h3>
-           <h3 className="text-danger">{error}</h3>
+      {loading && <h5 style={{ color: '#00b8d9', marginBottom: '1rem' }}>⟳ {loading}</h5>}
+      {success && <h5 style={{ color: '#2ed573', marginBottom: '1rem' }}>✓ {success}</h5>}
+      {error   && <h5 style={{ color: '#ff4757', marginBottom: '1rem' }}>✗ {error}</h5>}
 
-         <form onSubmit={handleSubmit}>
-           <input type="email" 
-           placeholder='Enter your email address here'
-           className='form-control'
-           required
-           value={email}
-           onChange={(e) => setEmail(e.target.value)}/> <br />
+      <h1 className="signin-title">Sign In</h1>
+      <p className="signin-subtitle">// access your apex account</p>
 
-           {/* {email} */}
+      <form onSubmit={handleSubmit}>
+        <label className="signin-label">Email Address</label>
+        <input
+          type="email"
+          className="signin-input"
+          placeholder="you@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-           <input type="password"
-           placeholder='Enter your password here'
-           className='form-control'
-           required
-           value={password}
-           onChange={(e) => setPassword(e.target.value)}/> <br />
+        <label className="signin-label">Password</label>
+        <input
+          type="password"
+          className="signin-input"
+          placeholder="••••••••"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-           {/* {password} */}
+        <button type="submit" className="signin-btn">
+          → Sign In
+        </button>
+      </form>
 
-           <input type="submit"
-           value="Sign In" 
-           className='btn btn-secondary'/> <br /><br />
+      <p className="signin-link">
+        No account? <Link to="/signup">Create one →</Link>
+      </p>
 
-            Don't have an account? <Link to={'/signup'}>Signup</Link>
-         </form>
-         </div>
     </div>
+  </div>
   )
 }
 

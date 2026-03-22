@@ -63,63 +63,68 @@ const Signup = () => {
 
 
   return (
-    <div className='row justify-content-center mt-4'>
-      <div className="card col-md-6 shadow p-4">
-        <h1 className='text-primary '>Sign Up</h1>
+      <div className="signup-wrapper">
+    <div className="signup-box">
 
-        <h5 className="text-warning"> {loading}</h5>
-        <h3 className="text-success">{success}</h3>
-        <h4 className="text-danger">{error}</h4>
+      {loading && <h5 style={{ color: '#00b8d9', marginBottom: '1rem' }}>⟳ {loading}</h5>}
+      {success && <h5 style={{ color: '#2ed573', marginBottom: '1rem' }}>✓ {success}</h5>}
+      {error   && <h5 style={{ color: '#ff4757', marginBottom: '1rem' }}>✗ {error}</h5>}
 
-        <form onSubmit={handleSubmit}>
+      <h1 className="signup-title">Create Account</h1>
+      <p className="signup-subtitle">// join the apex network</p>
 
-
-          <input type="text"
-          placeholder='Enter the Username'
-          className='form-control'
+      <form onSubmit={handleSubmit}>
+        <label className="signup-label">Username</label>
+        <input
+          type="text"
+          className="signup-input"
+          placeholder="apex_user"
           value={username}
-          onChange={(e => setUsername(e.target.value))}
-          required/> <br />
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
 
-          {/* {username} */}
-
-          <input type="email"
-          placeholder='Enter the Email address'
-          className='form-control'
+        <label className="signup-label">Email Address</label>
+        <input
+          type="email"
+          className="signup-input"
+          placeholder="you@example.com"
           value={email}
-          onChange={(e => setEmail(e.target.value))}
-          required /> <br />
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-          {/* {email} */}
-
-          <input type="password"
-          placeholder='Enter the password'
-          className='form-control'
+        <label className="signup-label">Password</label>
+        <input
+          type="password"
+          className="signup-input"
+          placeholder="••••••••"
           value={password}
-          onChange={(e => setPassword(e.target.value))}
-          required /> <br />
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-          {/* {password} */}
-
-          <input type="tel"
-          placeholder='Enter your mobile phone number'
-          className='form-control'
+        <label className="signup-label">Phone Number</label>
+        <input
+          type="tel"
+          className="signup-input"
+          placeholder="254XXXXXXXXX"
           value={tel}
-          onChange={(e => setTel(e.target.value))}
-          required /> <br />
-          {/* minLength={10}  */}
+          onChange={(e) => setTel(e.target.value)}
+          required
+        />
 
-          {/* {tel.length > 0 && tel.length < 10 && <span className='text-danger'>Phone number must be at least 10 digits</span>} */}
+        <button type="submit" className="signup-btn">
+          → Create Account
+        </button>
+      </form>
 
-          {/* {tel} */}
+      <p className="signup-link">
+        Already have an account? <Link to="/signin">Sign In →</Link>
+      </p>
 
-          <input type="submit" value="Signup" className='btn-primary'/>
-          <br /> <br />
-
-          Already have an account? <Link to={'/signin'}>Signin</Link>
-        </form>
-      </div>
     </div>
+  </div>
   )
 }
 

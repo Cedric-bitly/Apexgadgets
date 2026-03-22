@@ -1,6 +1,74 @@
-.notfound{
-    text-align: center;
-    margin-top: 20px;
-    color: rgb(216, 15, 15);
-    font-size: 20px;
+/* src/css/Notfound.css */
+
+.notfound {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.notfound-code {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(5rem, 15vw, 9rem);
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, #7c5cbf, #00b8d9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.notfound-glyph {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #00b8d9;
+  margin: 0.5rem 0 1.5rem;
+  animation: blink 2s ease-in-out infinite;
+}
+
+.notfound-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e8f4f8;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.notfound-msg {
+  font-size: 0.95rem;
+  color: #7a9bb5;
+  line-height: 1.6;
+  max-width: 420px;
+  margin: 0 auto 2rem;
+}
+
+.notfound-btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: transparent;
+  border: 1px solid #7c5cbf;
+  border-radius: 6px;
+  color: #7c5cbf;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.notfound-btn:hover {
+  background: #7c5cbf;
+  color: #fff;
+  box-shadow: 0 0 24px rgba(124, 92, 191, 0.4);
+  transform: translateY(-2px);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
 }

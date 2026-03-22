@@ -36,3 +36,822 @@
     transform: rotate(360deg);
   }
 }
+
+/* ── NAVBAR ── */
+.apex-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(5, 10, 15, 0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0 2rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.apex-nav-logo {
+  font-family: 'Orbitron', sans-serif;  /* add the font import below */
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: #00d4aa;
+  text-decoration: none;
+}
+
+.apex-nav-logo span { color: #f5a623; }
+
+.apex-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.apex-nav-links a {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: #7a9bb5;
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.apex-nav-links a:hover,
+.apex-nav-links a.nav-active {
+  color: #00d4aa;
+  border-color: rgba(0, 212, 170, 0.35);
+  background: rgba(0, 212, 170, 0.07);
+}
+
+/* Sign Up button stands out */
+.apex-nav-cta {
+  background: #00d4aa !important;
+  color: #050a0f !important;
+  font-weight: 700;
+  border: none !important;
+}
+
+.apex-nav-cta:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+/* ── SIGNUP PAGE ── */
+
+.signup-wrapper {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.signup-box {
+  width: 100%;
+  max-width: 460px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.5s ease;
+}
+
+/* top glowing line */
+.signup-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00d4aa, transparent);
+}
+
+/* decorative top-left corner accent */
+.signup-box::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 60px; height: 60px;
+  background: linear-gradient(225deg, transparent 50%, rgba(0, 212, 170, 0.12) 50%);
+  border-top-left-radius: 12px;
+}
+
+.signup-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #00d4aa;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.08em;
+}
+
+.signup-subtitle {
+  font-size: 0.75rem;
+  color: #7a9bb5;
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+}
+
+.signup-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7a9bb5;
+  margin-bottom: 0.4rem;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #e8f4f8;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.25s;
+  margin-bottom: 1.2rem;
+}
+
+.signup-input:focus {
+  border-color: #00d4aa;
+  background: rgba(0, 212, 170, 0.04);
+  box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+}
+
+.signup-input::placeholder { color: rgba(122, 155, 181, 0.5); }
+
+.signup-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #f5a623, #e8920a);
+  border: none;
+  border-radius: 6px;
+  color: #050a0f;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+}
+
+.signup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.35);
+}
+
+.signup-link {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #7a9bb5;
+  margin-top: 1.25rem;
+}
+
+.signup-link a {
+  color: #00d4aa;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-link a:hover { text-decoration: underline; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SIGNUP PAGE ── */
+
+.signup-wrapper {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.signup-box {
+  width: 100%;
+  max-width: 460px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.5s ease;
+}
+
+/* top glowing line */
+.signup-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00d4aa, transparent);
+}
+
+/* decorative top-left corner accent */
+.signup-box::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 60px; height: 60px;
+  background: linear-gradient(225deg, transparent 50%, rgba(0, 212, 170, 0.12) 50%);
+  border-top-left-radius: 12px;
+}
+
+.signup-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #00d4aa;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.08em;
+}
+
+.signup-subtitle {
+  font-size: 0.75rem;
+  color: #7a9bb5;
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+}
+
+.signup-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7a9bb5;
+  margin-bottom: 0.4rem;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #e8f4f8;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.25s;
+  margin-bottom: 1.2rem;
+}
+
+.signup-input:focus {
+  border-color: #00d4aa;
+  background: rgba(0, 212, 170, 0.04);
+  box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
+}
+
+.signup-input::placeholder { color: rgba(122, 155, 181, 0.5); }
+
+.signup-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #f5a623, #e8920a);
+  border: none;
+  border-radius: 6px;
+  color: #050a0f;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+}
+
+.signup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.35);
+}
+
+.signup-link {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #7a9bb5;
+  margin-top: 1.25rem;
+}
+
+.signup-link a {
+  color: #00d4aa;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup-link a:hover { text-decoration: underline; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SIGNIN PAGE ── */
+
+.signin-wrapper {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.signin-box {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.5s ease;
+}
+
+/* top glowing line */
+.signin-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00b8d9, transparent);
+}
+
+/* decorative top-right corner accent */
+.signin-box::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg, transparent 50%, rgba(0, 184, 217, 0.12) 50%);
+  border-top-right-radius: 12px;
+}
+
+.signin-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #00b8d9;
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.08em;
+}
+
+.signin-subtitle {
+  font-size: 0.75rem;
+  color: #7a9bb5;
+  letter-spacing: 0.06em;
+  margin-bottom: 2rem;
+}
+
+.signin-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7a9bb5;
+  margin-bottom: 0.4rem;
+}
+
+.signin-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #e8f4f8;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.25s;
+  margin-bottom: 1.2rem;
+}
+
+.signin-input:focus {
+  border-color: #00b8d9;
+  background: rgba(0, 184, 217, 0.04);
+  box-shadow: 0 0 0 3px rgba(0, 184, 217, 0.1);
+}
+
+.signin-input::placeholder { color: rgba(122, 155, 181, 0.5); }
+
+.signin-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #00b8d9, #00d4aa);
+  border: none;
+  border-radius: 6px;
+  color: #050a0f;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+}
+
+.signin-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 184, 217, 0.35);
+}
+
+.signin-link {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #7a9bb5;
+  margin-top: 1.25rem;
+}
+
+.signin-link a {
+  color: #00b8d9;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signin-link a:hover { text-decoration: underline; }
+
+/* ── MAKE PAYMENT PAGE ── */
+
+.payment-wrapper {
+  min-height: 90vh;
+  padding: 2rem;
+}
+
+.payment-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #7a9bb5;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s;
+}
+
+.payment-back:hover {
+  color: #2ed573;
+  border-color: #2ed573;
+}
+
+.payment-box {
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.5s ease;
+}
+
+/* top glowing line */
+.payment-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2ed573, transparent);
+}
+
+.payment-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #2ed573;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.payment-title::before {
+  content: '';
+  width: 3px;
+  height: 1rem;
+  background: #2ed573;
+  border-radius: 2px;
+}
+
+/* Product preview section */
+.payment-preview {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  margin-bottom: 1.75rem;
+}
+
+.payment-preview-img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.payment-product-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #2ed573;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.payment-product-desc {
+  font-size: 0.78rem;
+  color: #7a9bb5;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.payment-product-price {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f5a623;
+}
+
+.payment-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7a9bb5;
+  margin-bottom: 0.4rem;
+}
+
+.payment-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #e8f4f8;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.25s;
+  margin-bottom: 1.2rem;
+}
+
+.payment-input:focus {
+  border-color: #2ed573;
+  background: rgba(46, 213, 115, 0.04);
+  box-shadow: 0 0 0 3px rgba(46, 213, 115, 0.1);
+}
+
+.payment-input::placeholder { color: rgba(122, 155, 181, 0.5); }
+
+.payment-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #2ed573, #25b35e);
+  border: none;
+  border-radius: 6px;
+  color: #050a0f;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+}
+
+.payment-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(46, 213, 115, 0.35);
+}
+
+/* ── ADD PRODUCT PAGE ── */
+
+.addproduct-wrapper {
+  min-height: 90vh;
+  padding: 2rem;
+}
+
+.addproduct-box {
+  max-width: 500px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  animation: slideUp 0.5s ease;
+}
+
+/* top glowing line */
+.addproduct-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f5a623, transparent);
+}
+
+.addproduct-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #f5a623;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.addproduct-title::before {
+  content: '';
+  width: 3px;
+  height: 1rem;
+  background: #f5a623;
+  border-radius: 2px;
+}
+
+.addproduct-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #7a9bb5;
+  margin-bottom: 0.4rem;
+}
+
+.addproduct-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: #e8f4f8;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.25s;
+  margin-bottom: 1.2rem;
+}
+
+.addproduct-input:focus {
+  border-color: #f5a623;
+  background: rgba(245, 166, 35, 0.04);
+  box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.1);
+}
+
+.addproduct-input::placeholder { color: rgba(122, 155, 181, 0.5); }
+
+.addproduct-btn {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(135deg, #f5a623, #e8920a);
+  border: none;
+  border-radius: 6px;
+  color: #050a0f;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.5rem;
+}
+
+.addproduct-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 166, 35, 0.35);
+}
+
+/* ── GET PRODUCTS PAGE ── */
+
+.getproducts-wrapper {
+  padding: 2rem;
+}
+
+.getproducts-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00d4aa;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.getproducts-title::before {
+  content: '';
+  width: 3px;
+  height: 1.1rem;
+  background: #00d4aa;
+  border-radius: 2px;
+}
+
+.product-card {
+  background: rgba(11, 22, 35, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+  border-color: rgba(0, 212, 170, 0.3);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-card-body {
+  padding: 1.1rem;
+}
+
+.product-card-name {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #00d4aa;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.product-card-desc {
+  font-size: 0.78rem;
+  color: #7a9bb5;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.product-card-price {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #f5a623;
+  margin-bottom: 0.9rem;
+}
+
+.product-card-btn {
+  width: 100%;
+  padding: 0.5rem;
+  background: transparent;
+  border: 1px solid #00b8d9;
+  border-radius: 5px;
+  color: #00b8d9;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.product-card-btn:hover {
+  background: #00b8d9;
+  color: #050a0f;
+  box-shadow: 0 0 16px rgba(0, 184, 217, 0.4);
+}
+
+body {
+  background-color: #050a0f;
+}
