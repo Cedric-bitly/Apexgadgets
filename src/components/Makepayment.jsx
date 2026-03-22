@@ -37,7 +37,7 @@ const Makepayment = () => {
         formdata.append("phone", number);
         formdata.append("amount", product.product_cost)
 
-        const response = await axios.post("https://kbenkamotho.alwaysdata.net/api/mpesa_payment", formdata)
+        const response = await axios.post("https://cedric22a.alwaysdata.net/api/mpesa_payment", formdata)
         // set the loading back to default
         setLoading(false);
 
@@ -82,7 +82,7 @@ const Makepayment = () => {
         <div>
           <p className="payment-product-name">{product.product_name}</p>
           <p className="payment-product-desc">{product.product_description}</p>
-          <p className="payment-product-price">Kshs. {product.product_cost}</p>
+          <p className="payment-product-price">Kshs. {product.discountedPrice || product.product_cost}</p>
         </div>
       </div>
 

@@ -60,29 +60,53 @@ useEffect(() => {
     {error && <h4 style={{ color: '#ff4757' }}>✗ {error}</h4>}
 
     <div className="row g-4">
-      {products.map((product) => (
-        <div key={product.id} className="col-md-3 col-sm-6">
-          <div className="product-card">
-            <img
-              src={img_url + product.product_photo}
-              alt={product.product_name}
-            />
-            <div className="product-card-body">
-              <p className="product-card-name">{product.product_name}</p>
-              <p className="product-card-desc">
-                {product.product_description.slice(0, 61)}...
-              </p>
-              <p className="product-card-price">Kshs. {product.product_cost}</p>
-              <button
-                className="product-card-btn"
-                onClick={() => navigate('/makepayment', { state: { product } })}
-              >
-                ⚡ Make Purchase
-              </button>
-            </div>
-          </div>
+      {products.map((product) => {
+
+  // calculate the discounted price
+  const hasDiscount = product.discount > 0;
+  const discountedPrice = hasDiscount
+    ? Math.round(product.product_cost - (product.product_cost * product.discount / 100))
+    : product.product_cost;
+
+  return (
+    <div key={product.id} className="col-md-3 col-sm-6 d-flex">
+      <div className="product-card h-100 product-card-wrapper">
+
+        {/* Show badge only if discount exists */}
+        {hasDiscount && (
+          <div className="discount-badge">{product.discount}% OFF</div>
+        )}
+
+        <img
+          src={img_url + product.product_photo}
+          alt={product.product_name}
+        />
+        <div className="product-card-body">
+          <p className="product-card-name">{product.product_name}</p>
+          <p className="product-card-desc">
+            {product.product_description.slice(0, 61)}...
+          </p>
+
+          {/* Show strikethrough only if discount exists */}
+          {hasDiscount && (
+            <p className="product-original-price">Kshs. {product.product_cost}</p>
+          )}
+          <p className={hasDiscount ? 'product-discounted-price' : 'product-card-price'}>
+            Kshs. {discountedPrice}
+          </p>
+
+          <button
+            className="product-card-btn"
+            onClick={() => navigate('/makepayment', { state: { product: { ...product, discountedPrice } } })}
+          >
+            ⚡ Make Purchase
+          </button>
         </div>
-      ))}
+      </div>
+    </div>
+  );
+})}
+
     </div>
 
   </div>
