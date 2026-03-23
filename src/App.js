@@ -8,6 +8,7 @@ import Getproducts from './components/Getproducts';
 import Makepayment from './components/Makepayment';
 import Notfound from './components/Notfound';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
          <Route path = '/makepayment' element = {<Makepayment />} />
          <Route path = '/*' element = {<Notfound />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

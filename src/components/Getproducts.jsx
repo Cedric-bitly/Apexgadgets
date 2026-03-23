@@ -10,6 +10,11 @@ const [products, setProducts] = useState([]);
 const [loading, setLoading] = useState(false);
 const [error, setError] = useState("");
 
+
+const [activeCategory, setActiveCategory] = useState('All');
+
+const [searchQuery, setSearchQuery] = useState('');
+
 // declare the navigate hook
 const navigate = useNavigate();
 
@@ -54,13 +59,51 @@ useEffect(() => {
   return (
       <div className="getproducts-wrapper">
 
-    <h2 className="getproducts-title">Available Gadgets</h2>
+    <h2 className="getproducts-title justify-content-center">Available Gadgets</h2>
+
+      <div className="search-filter-row">
+
+      {/* Filter buttons */}
+      <div className="filter-wrapper">
+        {['All', 'Phones', 'Tablets', 'Laptops'].map((cat) => (
+          <button
+            key={cat}
+            className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
+            onClick={() => setActiveCategory(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Search bar */}
+      <div className="search-box">
+        <span className="search-icon">🔍</span>
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search gadgets..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
+      </div>
+
 
     {loading && <Loader />}
     {error && <h4 style={{ color: '#ff4757' }}>✗ {error}</h4>}
 
     <div className="row g-4">
-      {products.map((product) => {
+      {products
+  .filter((product) =>
+    activeCategory === 'All' ? true : product.category === activeCategory
+  )
+  .filter((product) =>
+    product.product_name.toLowerCase().includes(searchQuery.toLowerCase())
+  )
+
+      .map((product) => {
 
   // calculate the discounted price
   const hasDiscount = product.discount > 0;
