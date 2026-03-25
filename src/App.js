@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Signup from './components/Signup';
@@ -11,6 +12,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Forgotpassword from './components/Forgotpassword';
 import Resetpassword from './components/Resetpassword';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -24,7 +26,8 @@ function App() {
          <Route path = '/addproducts' element = {<Addproducts />} />
          <Route path = '/makepayment' element = {<Makepayment />} />
          <Route path = '/forgotpassword' element = {<Forgotpassword />} /> 
-          <Route path = '/resetpassword/:token' element = {<Resetpassword />} />
+         <Route path = '/resetpassword/:token' element = {<Resetpassword />} />
+         <Route path = '/profile' element = {<Profile />} />
          <Route path = '/*' element = {<Notfound />} />
          <Route></Route>
         </Routes>

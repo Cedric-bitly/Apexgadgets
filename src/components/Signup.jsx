@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   // initialize the hooks
@@ -9,6 +10,8 @@ const Signup = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("");
   const [tel, setTel] = useState("");
+
+  const navigate = useNavigate();
 
   // Define the three states an application will move to
   const [loading, setLoading] = useState("");
@@ -41,6 +44,10 @@ const Signup = () => {
 
       // just in case everything goes on well update the success hook with a message
       setSuccess(response.data.message);
+
+      setTimeout(() => {
+        navigate('/getproducts');
+      }, 2000);
 
       // clear your hooks
       setUsername("");
