@@ -51,6 +51,11 @@ const Signin = () => {
       else{
         setError("Login failed please try again")
       }
+
+       setTimeout(() => {
+        setSuccess("");
+      }, 3000);
+
   }
 
   catch(error){
@@ -94,6 +99,13 @@ const Signin = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+
+        <p style={{ textAlign: 'right', marginBottom: '0.5rem' }}>
+          <Link to="/forgotpassword"
+            style={{ color: '#7a9bb5', fontSize: '0.75rem' }}>
+            Forgot Password?
+          </Link>
+        </p>
 
         <button type="submit" className="signin-btn">
           → Sign In

@@ -9,6 +9,8 @@ import Makepayment from './components/Makepayment';
 import Notfound from './components/Notfound';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import Forgotpassword from './components/Forgotpassword';
+import Resetpassword from './components/Resetpassword';
 
 function App() {
   return (
@@ -21,7 +23,10 @@ function App() {
          <Route path = '/signin' element = {<Signin />} />
          <Route path = '/addproducts' element = {<Addproducts />} />
          <Route path = '/makepayment' element = {<Makepayment />} />
+         <Route path = '/forgotpassword' element = {<Forgotpassword />} /> 
+          <Route path = '/resetpassword/:token' element = {<Resetpassword />} />
          <Route path = '/*' element = {<Notfound />} />
+         <Route></Route>
         </Routes>
         <Footer />
       </div>

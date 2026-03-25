@@ -9,6 +9,8 @@ const [product_name, setProductname] = useState("");
 const [product_description, setProductdescription] = useState("");
 const [product_cost, setProductcost] = useState("");
 const [product_photo, setProductphoto] = useState("");
+const [product_category, setProductcategory] = useState("");
+const [product_discount, setProductdiscount] = useState(0);
 
  //  declare the dditional hook to manage the loading state of the application
  
@@ -38,6 +40,8 @@ const [product_photo, setProductphoto] = useState("");
       formdata.append("product_description", product_description)
       formdata.append("product_cost", product_cost)
       formdata.append("product_photo", product_photo)
+      formdata.append("product_category", product_category)
+      formdata.append("product_discount", product_discount)
  
 
       //interact with axios
@@ -58,6 +62,8 @@ const [product_photo, setProductphoto] = useState("");
       setProductdescription("");
       setProductcost("");
       setProductphoto("");
+      setProductcategory("");
+      setProductdiscount("");
 
       e.target.reset()
 
@@ -127,6 +133,28 @@ const [product_photo, setProductphoto] = useState("");
           onChange={(e) => setProductphoto(e.target.files[0])}
           required
         />
+
+          <label className="addproduct-label">Gadget Category</label>
+          <input
+            type="text"
+            className="addproduct-input"
+            placeholder="Enter the gadget category"
+            value={product_category}
+            onChange={(e) => setProductcategory(e.target.value)}
+            required
+          />
+
+            
+          <label className="addproduct-label"> Gadget Discount (%)</label>
+          <input
+            type="number"
+            className="addproduct-input"
+            placeholder="Enter gadget discount e.g 10 for 10%"
+            value={product_discount}
+            onChange={(e) => setProductdiscount(e.target.value)}
+            min="0"
+            max="100"
+          />
 
         <button type="submit" className="addproduct-btn">
           + Add Gadget to Catalogue
