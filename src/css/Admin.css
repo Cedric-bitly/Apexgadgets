@@ -1,0 +1,245 @@
+/* ── ADMIN AUTHENTICATION STYLING ── */
+
+.admin-auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0b1623 0%, #1a2938 100%);
+  position: relative;
+}
+
+.auth-checking {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(11, 22, 35, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 71, 87, 0.2);
+}
+
+.auth-spinner {
+  width: 60px;
+  height: 60px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid #ff4757;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1.5rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.auth-checking p {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  color: #7a9bb5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Admin Page Styling */
+.admin-wrapper {
+  min-height: 90vh;
+  padding: 2rem;
+  position: relative;
+}
+
+.admin-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #ff4757, #ff3838);
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+.admin-icon {
+  font-size: 0.9rem;
+}
+
+.admin-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff4757;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 20px rgba(255, 71, 87, 0.3);
+}
+
+.admin-subtitle {
+  font-size: 0.9rem;
+  color: #7a9bb5;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-box {
+  border: 1px solid rgba(255, 71, 87, 0.2);
+  box-shadow: 0 20px 40px rgba(255, 71, 87, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ff4757, #ff3838);
+  animation: slide-across 3s ease-in-out infinite;
+}
+
+@keyframes slide-across {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+}
+
+/* Enhanced form styling for admin */
+.admin-box .addproduct-title {
+  color: #ff4757;
+  text-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
+}
+
+.admin-box .addproduct-btn {
+  background: linear-gradient(135deg, #ff4757, #ff3838);
+  color: #ffffff;
+  border: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.admin-box .addproduct-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 71, 87, 0.35);
+}
+
+.admin-box .addproduct-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.admin-box .addproduct-btn:hover::before {
+  left: 100%;
+}
+
+/* Access Denied Message */
+.access-denied-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.access-denied-box {
+  background: rgba(11, 22, 35, 0.95);
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  border-radius: 16px;
+  padding: 3rem;
+  text-align: center;
+  max-width: 500px;
+  backdrop-filter: blur(10px);
+}
+
+.access-denied-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+.access-denied-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ff4757;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.access-denied-message {
+  font-size: 0.9rem;
+  color: #7a9bb5;
+  margin-bottom: 2rem;
+}
+
+.access-denied-btn {
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, #00d4aa, #00b8d9);
+  color: #050a0f;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.access-denied-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 212, 170, 0.35);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .admin-wrapper {
+    padding: 1rem;
+  }
+  
+  .admin-title {
+    font-size: 1.5rem;
+  }
+  
+  .access-denied-box {
+    margin: 1rem;
+    padding: 2rem;
+  }
+}

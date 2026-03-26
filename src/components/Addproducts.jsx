@@ -42,12 +42,26 @@ const [product_discount, setProductdiscount] = useState(0);
       formdata.append("product_photo", product_photo)
       formdata.append("product_category", product_category)
       formdata.append("product_discount", product_discount)
- 
+      // Also try alternative field name
+      formdata.append("discount", product_discount)
+
+      // Debug: Log what we're sending
+      console.log("Sending form data:");
+      console.log("product_name:", product_name);
+      console.log("product_cost:", product_cost);
+      console.log("product_category:", product_category);
+      console.log("product_discount:", product_discount);
+      console.log("Form data entries:");
+      for (let [key, value] of formdata.entries()) {
+        console.log(key, value);
+      }
 
       //interact with axios
       const response = await axios.post("https://cedric22a.alwaysdata.net/api/add_product", formdata)
      
  
+      // Debug: Log the response
+      console.log("API Response:", response.data);
 
       //set the loading back to default
       setLoading(false)
@@ -79,14 +93,15 @@ const [product_discount, setProductdiscount] = useState(0);
 
       // update the error hook with message
       setError(error.message)
- 
+      console.log("Error:", error.response?.data || error.message);
+
 
     }
   }
 
   return (
-      <div className="addproduct-wrapper">
-    <div className="addproduct-box">
+    <div className="addproduct-wrapper">
+      <div className="addproduct-box">
 
       <h3 className="addproduct-title">Add an Apex Gadget</h3>
 
