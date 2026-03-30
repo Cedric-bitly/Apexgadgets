@@ -30,22 +30,16 @@ const Cart = () => {
   // Calculate total
   const calculateTotal = (cartItems) => {
     const sum = cartItems.reduce((acc, item) => {
-      const price = item.discountedPrice || item.product_cost;
-      return acc + price;
+      const price = item.product_cost;
+      return acc + (price * item.quantity);
     }, 0);
     setTotal(sum);
   };
 
   // Add item to cart
   const addToCart = (product) => {
-    const hasDiscount = product.discount > 0;
-    const discountedPrice = hasDiscount
-      ? Math.round(product.product_cost - (product.product_cost * product.discount / 100))
-      : product.product_cost;
-
     const newItem = {
       ...product,
-      discountedPrice,
       quantity: 1,
       addedAt: new Date().toISOString()
     };
@@ -133,25 +127,16 @@ const Cart = () => {
                 </div>
                 
                 <div className="item-details">
-                  <div className="item-header">
-                    <h4 className="item-name">{item.product_name}</h4>
-                    <div className="item-category">{item.category}</div>
-                  </div>
+                  <h4 className="item-name">{item.product_name}</h4>
                   
                   <p className="item-description">
                     {item.product_description.slice(0, 80)}...
                   </p>
                   
                   <div className="item-price-section">
-                    {item.discount > 0 && (
-                      <p className="item-original-price">Kshs. {item.product_cost}</p>
-                    )}
                     <p className="item-final-price">
-                      Kshs. {item.discountedPrice}
+                      Kshs. {item.product_cost}
                     </p>
-                    {item.discount > 0 && (
-                      <span className="discount-tag">{item.discount}% OFF</span>
-                    )}
                   </div>
                   
                   <div className="item-controls">

@@ -82,7 +82,7 @@ const Makepayment = () => {
         <div>
           <p className="payment-product-name">{product.product_name}</p>
           <p className="payment-product-desc">{product.product_description}</p>
-          <p className="payment-product-price">Kshs. {product.discountedPrice || product.product_cost}</p>
+          <p className="payment-product-price">Kshs. {product.product_cost}</p>
         </div>
       </div>
 

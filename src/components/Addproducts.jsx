@@ -9,8 +9,6 @@ const [product_name, setProductname] = useState("");
 const [product_description, setProductdescription] = useState("");
 const [product_cost, setProductcost] = useState("");
 const [product_photo, setProductphoto] = useState("");
-const [product_category, setProductcategory] = useState("");
-const [product_discount, setProductdiscount] = useState(0);
 
  //  declare the dditional hook to manage the loading state of the application
  
@@ -40,17 +38,11 @@ const [product_discount, setProductdiscount] = useState(0);
       formdata.append("product_description", product_description)
       formdata.append("product_cost", product_cost)
       formdata.append("product_photo", product_photo)
-      formdata.append("product_category", product_category)
-      formdata.append("product_discount", product_discount)
-      // Also try alternative field name
-      formdata.append("discount", product_discount)
 
       // Debug: Log what we're sending
       console.log("Sending form data:");
       console.log("product_name:", product_name);
       console.log("product_cost:", product_cost);
-      console.log("product_category:", product_category);
-      console.log("product_discount:", product_discount);
       console.log("Form data entries:");
       for (let [key, value] of formdata.entries()) {
         console.log(key, value);
@@ -76,8 +68,6 @@ const [product_discount, setProductdiscount] = useState(0);
       setProductdescription("");
       setProductcost("");
       setProductphoto("");
-      setProductcategory("");
-      setProductdiscount("");
 
       e.target.reset()
 
@@ -149,27 +139,6 @@ const [product_discount, setProductdiscount] = useState(0);
           required
         />
 
-          <label className="addproduct-label">Gadget Category</label>
-          <input
-            type="text"
-            className="addproduct-input"
-            placeholder="Enter the gadget category"
-            value={product_category}
-            onChange={(e) => setProductcategory(e.target.value)}
-            required
-          />
-
-            
-          <label className="addproduct-label"> Gadget Discount (%)</label>
-          <input
-            type="number"
-            className="addproduct-input"
-            placeholder="Enter gadget discount e.g 10 for 10%"
-            value={product_discount}
-            onChange={(e) => setProductdiscount(e.target.value)}
-            min="0"
-            max="100"
-          />
 
         <button type="submit" className="addproduct-btn">
           + Add Gadget to Catalogue

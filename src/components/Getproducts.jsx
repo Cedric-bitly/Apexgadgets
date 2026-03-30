@@ -11,7 +11,6 @@ const Getproducts = () => {
   const [error, setError] = useState("");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
 
   // declare navigate hook
@@ -19,14 +18,8 @@ const Getproducts = () => {
 
   // Add to cart function
   const addToCart = (product) => {
-    const hasDiscount = product.discount > 0;
-    const discountedPrice = hasDiscount
-      ? Math.round(product.product_cost - (product.product_cost * product.discount / 100))
-      : product.product_cost;
-
     const newItem = {
       ...product,
-      discountedPrice,
       quantity: 1,
       addedAt: new Date().toISOString()
     };
@@ -79,9 +72,6 @@ const Getproducts = () => {
       // Debug: Log the products to see what data we're getting
       console.log("Products from API:", response.data);
       
-      // Check if any products have discounts
-      const productsWithDiscounts = response.data.filter(p => p.discount > 0);
-      console.log("Products with discounts:", productsWithDiscounts);
 
       // update products hook with response from the API
       setProducts(response.data);
@@ -128,29 +118,6 @@ const Getproducts = () => {
       <div className="title-underline"></div>
     </div>
 
-      <div className="search-filter-row">
-
-      {/* Enhanced Filter buttons */}
-      <div className="filter-wrapper">
-        {['All', 'Phones', 'Tablets', 'Laptops'].map((cat) => (
-          <button
-            key={cat}
-            className={`filter-btn ${activeCategory === cat ? 'active' : ''}`}
-            onClick={() => setActiveCategory(cat)}
-          >
-            <span className="filter-icon">
-              {cat === 'All' && '🌟'}
-              {cat === 'Phones' && '📱'}
-              {cat === 'Tablets' && '📟'}
-              {cat === 'Laptops' && '💻'}
-            </span>
-            <span className="filter-text">{cat}</span>
-            <div className="filter-glow"></div>
-          </button>
-        ))}
-      </div>
-
-      {/* Enhanced Search bar */}
       <div className="search-box">
         <span className="search-icon">🔍</span>
         <input
@@ -163,8 +130,6 @@ const Getproducts = () => {
         <div className="search-glow"></div>
       </div>
 
-      </div>
-
 
     {loading && <Loader />}
     {error && <h4 className="error-message">✗ {error}</h4>}
@@ -172,34 +137,14 @@ const Getproducts = () => {
     <div className="row g-4">
       {products
   .filter((product) =>
-    activeCategory === 'All' ? true : product.category === activeCategory
-  )
-  .filter((product) =>
     product.product_name.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
       .map((product, index) => {
-
-  // calculate discounted price
-  const hasDiscount = product.discount > 0;
-  const discountedPrice = hasDiscount
-    ? Math.round(product.product_cost - (product.product_cost * product.discount / 100))
-    : product.product_cost;
-
-  // Debug: Log discount calculation
-  console.log(`Product: ${product.product_name}, Discount: ${product.discount}, Has Discount: ${hasDiscount}, Discounted Price: ${discountedPrice}`);
-
   return (
     <div key={product.id} className="col-md-3 col-sm-6 d-flex">
       <div className="product-card h-100 product-card-wrapper" style={{ animationDelay: `${index * 0.1}s` }}>
 
-        {/* Show badge only if discount exists */}
-        {hasDiscount && (
-          <div className="discount-badge">
-            <span className="badge-text">{product.discount}% OFF</span>
-            <div className="badge-glow"></div>
-          </div>
-        )}
 
         <div className="product-image-container">
           <img
@@ -210,26 +155,19 @@ const Getproducts = () => {
         </div>
         
         <div className="product-card-body">
-          <div className="product-header">
-            <p className="product-card-name">{product.product_name}</p>
-            <div className="product-category-badge">{product.category}</div>
-          </div>
+          <p className="product-card-name">{product.product_name}</p>
           
           <p className="product-card-desc">
             {product.product_description.slice(0, 61)}...
           </p>
 
-          {/* Show strikethrough only if discount exists */}
-          {hasDiscount && (
-            <p className="product-original-price">Kshs. {product.product_cost}</p>
-          )}
-          <p className={hasDiscount ? 'product-discounted-price' : 'product-card-price'}>
-            Kshs. {discountedPrice}
+          <p className="product-card-price">
+            Kshs. {product.product_cost}
           </p>
 
           <button
             className="product-card-btn"
-            onClick={() => navigate('/makepayment', { state: { product: { ...product, discountedPrice } } })}
+            onClick={() => navigate('/makepayment', { state: { product } })}
           >
             <span className="btn-icon">⚡</span>
             <span className="btn-text">Make Purchase</span>
